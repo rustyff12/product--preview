@@ -3,14 +3,14 @@
 /* ================== */
 
 /* --- Box.sizing --- */
-*, 
+*,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
 /* --- Reset margins --- */
-body, 
+body,
 h1, h2, h3,
 h4, h5, h6,
 p, figure,
@@ -24,7 +24,7 @@ h5, h6, p {
 }
 
 /* --- Images --- */
-img, 
+img,
 picture {
     max-width: 100%;
 }
@@ -34,41 +34,50 @@ picture {
 /* ================== */
 :root {
     /* --- Colors --- */
-    --primary-dark: 158, 36%, 37%;
-    --primary-cream: 30, 38%, 92%;
+    --primary-dark: hsl(158, 36%, 37%);
+    --primary-cream: hsl(30, 38%, 92%);
 
-    --neutral-x-dark: 212, 21%, 14%;
-    --neutral-dark-blue: 228, 12%, 48%;
-    --neutral-white: 0, 0%, 100%;
+    --neutral-x-dark: hsl(212, 21%, 14%);
+    --neutral-dark-blue: hsl(228, 12%, 48%);
+    --neutral-white: hsl(0, 0%, 100%);
 
     /* --- font-sizes --- */
-    --fs-700: 1.5rem;
+    --fs-700: 1.9rem;
     --fs-500: 1rem;
+    --fs-400: 0.875rem;
 
     /* --- Font-families --- */
-    --ff-montserrat: 'Montserrat', sans-serif; 
+    --ff-montserrat: 'Montserrat', sans-serif;
     --ff-fraunces: 'Fraunces', serif;
 }
 
+@media (min-width: 55em) {
+    :root {
+      /* --- font-sizes --- */
+    --fs-700: 1.7rem;
+    --fs-500: 0.9rem;  
+    --fs-400: 0.75rem;
+    }
+}
 
-/* font-family: 'Montserrat', sans-serif; */
-/* font-family: 'Fraunces', serif; */
+@media (min-width: 65em) {
+    :root {
+      /* --- font-sizes --- */
+    --fs-700: 1.9rem;
+    --fs-500: 1rem;  
+    --fs-400: 0.875rem;
+    }
+}
 
 /* ===================== */
        /* Utility */
 /* ===================== */
 /* --- Colors --- */
-.bg-pr-dark { background-color: hsl(var(--primary-dark));}
-.bg-pr-cream { background-color: hsl(var(--primary-cream));}
-.bg-neutral-x-dark { background-color: hsl(var(--neutral-x-dark));}
-.bg-neutral-dark-blue { background-color: hsl(var(--neutral-dark-blue));}
-.bg-neutral-white { background-color: hsl(var(--neutral-white));}
-
-.text-pr-dark { color:  hsl(var(--primary-dark));}
-.text-pr-cream { color:  hsl(var(--primary-cream));}
-.text-neutral-x-dark { color:  hsl(var(--neutral-x-dark));}
-.text-neutral-dark-blue { color:  hsl(var(--neutral-dark-blue));}
-.text-neutral-white { color:  hsl(var(--neutral-white));}
+.pr-dark { color: var(--primary-dark);}
+.pr-cream { color: var(--primary-cream);}
+.neutral-x-dark { color: var(--neutral-x-dark);}
+.neutral-dark-blue { color: var(--neutral-dark-blue);}
+.neutral-white { color: var(--neutral-white);}
 
 /* --- Typography --- */
 .ff-montserrat {font-family: 'Montserrat', sans-serif;}
@@ -76,6 +85,7 @@ picture {
 
 .fs-700 { font-size: var(--fs-700); }
 .fs-500 { font-size: var(--fs-500); }
+.fs-400 { font-size: var(--fs-400); }
 
 .uppercase { text-transform: uppercase; }
 
@@ -86,14 +96,120 @@ picture {
 /* ===================== */
 /* --- Body setup --- */
 body {
-   display: grid; 
+    padding: 1.5rem 1rem;
+    background-color: var(--primary-cream);
 }
 
+main {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    border: 0;
+    border-radius: 10px;
+    background-color: var(--neutral-white);
+    max-width: 685px;
+}
 
+img {
+    border-radius: 10px 10px 0 0;
+}
 
+.text-accent {
+    color: var(--neutral-dark-blue);
+}
 
-/* 
-Mobile: 375px, 20em
-tablet: 560px ,35em
-Desktop: 1440px, 45em
-*/
+.second {
+    padding: 1rem;
+}
+
+.second > * {
+    margin-bottom: 0.5rem;
+}
+
+.main-text {
+    line-height: 1.5rem;
+}
+
+.prices {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.prices p {
+    text-decoration: line-through;
+}
+
+button {
+    background-color: var(--primary-dark);
+    border: 0;
+    border-radius: 10px;
+    padding: 0.5rem 2rem;
+    width: 100%;
+    color: var(--neutral-white);
+}
+
+button:hover,
+button:active {
+    cursor: pointer;
+    background-color: hsl(156, 42%, 18%);
+}
+
+/* 65em and 1040px */
+
+@media (min-width: 55em) {
+    body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+    }
+
+    main {
+        display: flex;
+        flex-direction: row;
+        width: 50%;
+        max-width: 700px;
+    }
+
+    img {
+        border-radius: 10px 0 0 10px;
+        height: 100%;
+    }
+
+    .first {
+        width: 55%
+    }
+
+    .second {
+        width: 45%;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .second > * {
+        margin-bottom: 1rem;
+    }
+
+    .main-text {
+        font-size: 0.875rem;
+        line-height: 1.5rem;
+    }
+}
+
+@media (min-width: 65em) {
+    body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+    }
+
+    .first {
+        width: 50%
+    }
+
+    .second {
+        width: 50%;
+    }
+}
